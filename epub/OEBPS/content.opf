@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package unique-identifier="BookID" version="3.0" xmlns="http://www.idpf.org/2007/opf">
+    <metadata xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:opf="http://www.idpf.org/2007/opf">
+        <dc:title>내 첫 번째 전자책</dc:title>
+        <dc:language>ko</dc:language>
+        <dc:identifier id="BookID">urn:uuid:12345678-1234-1234-1234-123456789012</dc:identifier>
+        <dc:creator>김우진</dc:creator>
+        <dc:publisher>자가출판</dc:publisher>
+        <dc:date>2023-06-02</dc:date>
+        <meta property="dcterms:modified">2023-06-02T12:00:00Z</meta>
+    </metadata>
+    <manifest>
+        <item id="ncx" href="toc.ncx" media-type="application/x-dtbncx+xml"/>
+        <item id="toc" href="toc.xhtml" media-type="application/xhtml+xml" properties="nav"/>
+        <item id="cover" href="cover.xhtml" media-type="application/xhtml+xml"/>
+        <item id="cover-image" href="images/cover.jpg" media-type="image/jpeg" properties="cover-image"/>
+        <item id="css" href="styles/stylesheet.css" media-type="text/css"/>
+        <item id="page1" href="page1.xhtml" media-type="application/xhtml+xml"/>
+        <item id="page2" href="page2.xhtml" media-type="application/xhtml+xml"/>
+        <item id="page3" href="page3.xhtml" media-type="application/xhtml+xml"/>
+        <item id="page4" href="page4.xhtml" media-type="application/xhtml+xml"/>
+        <item id="page5" href="page5.xhtml" media-type="application/xhtml+xml"/>
+    </manifest>
+    <spine toc="ncx">
+        <itemref idref="cover"/>
+        <itemref idref="toc"/>
+        <itemref idref="page1"/>
+        <itemref idref="page2"/>
+        <itemref idref="page3"/>
+        <itemref idref="page4"/>
+        <itemref idref="page5"/>
+    </spine>
+</package> 
