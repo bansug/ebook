@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="ko" xml:lang="ko">
+<head>
+    <title>3. 전자 투표 시스템 만들기 - 알고리즘 설계 및 프로그래밍</title>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" type="text/css" href="../Styles/common.css"/>
+    <link rel="stylesheet" type="text/css" href="../Styles/chapter.css"/>
+    <link rel="stylesheet" type="text/css" href="../Styles/chapter3.css"/>
+    <link rel="stylesheet" type="text/css" href="../Styles/interactive.css"/>
+</head>
+<body>
+    <div class="chapter-container">
+        <section class="main-content">
+            <h1 class="chapter-title">3. 전자 투표 시스템 만들기 - 알고리즘 설계 및 프로그래밍</h1>
+            
+            <!-- 진행 단계 표시 -->
+            <div class="progress-indicator">
+                <div class="progress-step completed">1. 문제 알아보기</div>
+                <div class="progress-step completed">2. 문제 분석</div>
+                <div class="progress-step completed">3. 추상화</div>
+                <div class="progress-step active">4. 알고리즘 설계</div>
+                <div class="progress-step">5. 프로그래밍</div>
+            </div>
+
+            <!-- 알고리즘 설계 섹션 -->
+            <section class="algorithm-design">
+                <h2><span class="number">4.</span> 알고리즘 설계하기</h2>
+                <div class="box algo">
+                    <h3><span class="title-box">📌알고리즘</span></h3>
+                    <div class="algorithm-container">
+                        <div class="algo-group">
+                            <div class="algo-content">
+                                <ol class="algo-steps">
+                                    <li>전자 투표의 시작을 안내한다.</li>
+                                    <li>후보 번호를 선택하여 후보자에게 투표한다.</li>
+                                    <li>2에서 선택된 후보의 득표수를 1만큼 증가한다.</li>
+                                    <li>투표를 마치면 투표를 종료한다.</li>
+                                </ol>
+                            </div>
+                            <div class="algo-group-label">투표하기</div>
+                        </div>
+
+                        <div class="algo-group">
+                            <div class="algo-content">
+                                <ol class="algo-steps" start="5">
+                                    <li>가장 많은 표를 얻은 후보를 당선자로 안내한다.</li>
+                                </ol>
+                            </div>
+                            <div class="algo-group-label">당선자 선정 및 안내하기</div>
+                        </div>
+                    </div>
+
+                    <!-- 상호작용 알고리즘 퀴즈 -->
+                    <div class="interactive-algorithm" onclick="showAlgorithmQuiz()">
+                        🧠 알고리즘 이해도 확인하기 (클릭)
+                    </div>
+                    <div id="algorithmQuiz" class="algorithm-quiz" style="display: none;">
+                        <div class="quiz-question">알고리즘에서 가장 먼저 수행되는 단계는?</div>
+                        <ul class="quiz-options">
+                            <li onclick="selectAlgorithmAnswer(this, true)">전자 투표의 시작을 안내한다</li>
+                            <li onclick="selectAlgorithmAnswer(this, false)">후보 번호를 선택한다</li>
+                            <li onclick="selectAlgorithmAnswer(this, false)">득표수를 증가한다</li>
+                            <li onclick="selectAlgorithmAnswer(this, false)">당선자를 안내한다</li>
+                        </ul>
+                        <div id="algorithmFeedback" class="quiz-feedback" style="display: none;"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 프로그래밍 시작 섹션 -->
+            <section class="programming-start">
+                <h2><span class="number">5.</span> 프로그래밍하기</h2>
+                
+                <div class="screen-preview">
+                    <h3><span class="title-box">📌화면 구성 (센서 보드의 슬라이더 센서와 버튼을 이용해서 투표한다.)</span></h3>
+                    <p class="instruction">투표의 시작과 당선자를 안내할 선생님 오브젝트, 투표 중 투표자가 선택한 후보자의 번호를 안내할 후보 번호 오브젝트, 투표 종료 오브젝트를 배치한다.</p>
+                    
+                    <!-- 상호작용 화면 구성 퀴즈 -->
+                    <div class="interactive-algorithm" onclick="showScreenQuiz()" style="margin-top: 20px;">
+                        🖥️ 화면 구성 이해도 확인하기 (클릭)
+                    </div>
+                    <div id="screenQuiz" class="algorithm-quiz" style="display: none;">
+                        <div class="quiz-question">전자 투표 시스템에서 필요한 오브젝트가 아닌 것은?</div>
+                        <ul class="quiz-options">
+                            <li onclick="selectScreenAnswer(this, false)">선생님 오브젝트</li>
+                            <li onclick="selectScreenAnswer(this, false)">후보 번호 오브젝트</li>
+                            <li onclick="selectScreenAnswer(this, true)">게임 캐릭터 오브젝트</li>
+                            <li onclick="selectScreenAnswer(this, false)">투표 종료 오브젝트</li>
+                        </ul>
+                        <div id="screenFeedback" class="quiz-feedback" style="display: none;"></div>
+                    </div>
+                </div>
+
+                <div class="objects-section">
+                    <div class="tables-container">
+                        <table class="objects-table">
+                            <thead>
+                                <tr>
+                                    <th>실행화면</th>
+                                    <th>필요한 오브젝트</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><img src="../Images/run.png" alt="실행화면" class="table-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"/>
+                                        <div style="display:none; padding: 20px; background: #f0f0f0; text-align: center; border-radius: 4px;">
+                                            [실행화면 이미지]<br/>
+                                            이미지를 불러올 수 없습니다.
+                                        </div>
+                                    </td>
+                                    <td><img src="../Images/object.PNG" alt="필요한 오브젝트" class="table-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"/>
+                                        <div style="display:none; padding: 20px; background: #f0f0f0; text-align: center; border-radius: 4px;">
+                                            [필요한 오브젝트 이미지]<br/>
+                                            이미지를 불러올 수 없습니다.
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <table class="objects-table">
+                            <thead>
+                                <tr>
+                                    <th colspan="2">📌필요한 신호</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="signal-name">투표하기</td>
+                                    <td class="signal-desc">후보 번호 오브젝트에 후보 번호를 고르고 버튼을 눌러 투표를 하는 역할을 한다.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <section class="programming-steps">
+                    <h3><span class="title-box">📌전자 투표 시스템 프로그래밍</span></h3>
+                    
+                    <div class="algorithm-step">
+                        <p class="step-title">1. 전자 투표의 시작을 안내한다.</p>
+                        <ul class="step-details">
+                            <li>시작하기 버튼이 눌리면 선생님이 투표의 시작을 안내한다.</li>
+                        </ul>
+                    </div>
+
+                    <table class="program-table">
+                        <thead>
+                            <tr>
+                                <th>상세 알고리즘</th>
+                                <th>프로그래밍</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><img src="../Images/algorithm.PNG" alt="상세 알고리즘" class="table-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"/>
+                                    <div style="display:none; padding: 20px; background: #f0f0f0; text-align: center; border-radius: 4px;">
+                                        [상세 알고리즘 이미지]<br/>
+                                        이미지를 불러올 수 없습니다.
+                                    </div>
+                                </td>
+                                <td><img src="../Images/program.PNG" alt="프로그래밍 코드" class="table-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"/>
+                                    <div style="display:none; padding: 20px; background: #f0f0f0; text-align: center; border-radius: 4px;">
+                                        [프로그래밍 코드 이미지]<br/>
+                                        이미지를 불러올 수 없습니다.
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <!-- 프로그래밍 실습 섹션 -->
+                    <div class="interactive-algorithm" onclick="showProgrammingPractice()" style="margin-top: 30px;">
+                        💻 프로그래밍 실습해보기 (클릭)
+                    </div>
+                    <div id="programmingPractice" class="algorithm-quiz" style="display: none;">
+                        <div class="quiz-question">다음 중 올바른 프로그래밍 순서는?</div>
+                        <ul class="quiz-options">
+                            <li onclick="selectProgrammingAnswer(this, false)">버튼 클릭 → 득표수 증가 → 시작 안내</li>
+                            <li onclick="selectProgrammingAnswer(this, true)">시작 안내 → 후보 선택 → 버튼 클릭 → 득표수 증가</li>
+                            <li onclick="selectProgrammingAnswer(this, false)">득표수 증가 → 후보 선택 → 시작 안내</li>
+                            <li onclick="selectProgrammingAnswer(this, false)">후보 선택 → 시작 안내 → 득표수 증가</li>
+                        </ul>
+                        <div id="programmingFeedback" class="quiz-feedback" style="display: none;"></div>
+                    </div>
+                </section>
+
+                <!-- 학습 정리 섹션 -->
+                <section class="interact-section" style="margin-top: 30px; background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%); border-left-color: #673ab7;">
+                    <h3 style="color: #673ab7;">📝 학습 정리</h3>
+                    <p>이번 단원에서 학습한 내용을 정리해보세요:</p>
+                    <div class="code-highlight">
+                        <strong>알고리즘 설계 단계:</strong><br/>
+                        1. 문제 분석 → 2. 단계별 분해 → 3. 순서 정리 → 4. 구체화
+                    </div>
+                    <div class="code-highlight">
+                        <strong>프로그래밍 구현 단계:</strong><br/>
+                        1. 화면 구성 → 2. 오브젝트 배치 → 3. 신호 설정 → 4. 코드 작성
+                    </div>
+                </section>
+            </section>
+            <!-- 네비게이션 버튼 -->
+            <div class="navigation-buttons">
+                <a href="chapter2.xhtml" class="nav-btn prev-btn">이전 챕터</a>
+                <a href="chapter4.xhtml" class="nav-btn next-btn">다음 챕터</a>
+            </div>
+        </section>
+        <div class="page-number">
+            <span class="chapter">2. 피지컬 컴퓨팅 시스템 개발하기</span>
+            <span class="number">149</span>
+        </div>
+    </div>
+
+    <!-- 기존 스크립트 먼저 로드 -->
+    <script type="text/javascript" src="../Scripts/chapter3-interactive.js"></script>
+    <!-- 네비게이션 스크립트를 마지막에 로드 -->
+    <script type="text/javascript" src="../Scripts/navigation.js"></script>
+</body>
+</html>

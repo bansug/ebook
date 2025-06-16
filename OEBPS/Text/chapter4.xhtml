@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="ko" xml:lang="ko">
+<head>
+    <title>4. 후보 선택 및 득표 반영</title>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" type="text/css" href="../Styles/common.css"/>
+    <link rel="stylesheet" type="text/css" href="../Styles/chapter.css"/>
+    <link rel="stylesheet" type="text/css" href="../Styles/chapter4.css"/>
+    <link rel="stylesheet" type="text/css" href="../Styles/interactive.css"/>
+</head>
+<body>
+    <div class="chapter-container">
+        <section class="main-content">
+            <h1 class="chapter-title">4. 후보 선택 및 득표 반영</h1>
+            
+            <!-- 진행률 추적기 -->
+            <div class="progress-tracker">
+                <h3>🎯 학습 진행률</h3>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill" style="width: 60%;"></div>
+                </div>
+                <div class="progress-text">프로그래밍 구현 단계 (60% 완료)</div>
+            </div>
+
+            <!-- 보충 설명 테이블 -->
+            <table class="example-table">
+                <tbody>
+                    <tr>
+                        <td>[보충] 프로그램 수정하기 - 수식을 이용해서 후보 선택하기</td>
+                    </tr>
+                    <tr>
+                        <td>슬라이더 센서로 세 명의 후보 중 하나를 선택하기 위한 예시
+                            <img src="../Images/a4.PNG" alt="슬라이더 센서 후보 선택 예시" class="example-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"/>
+                            <div style="display:none; padding: 20px; background: #f0f0f0; text-align: center; border-radius: 4px;">
+                                [슬라이더 센서 예시 이미지]<br/>
+                                이미지를 불러올 수 없습니다.
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- 단계별 가이드 -->
+            <div class="step-guide">
+                <div class="guide-title">슬라이더 센서 활용 가이드</div>
+                <div class="guide-content">
+                    슬라이더 센서의 값을 3등분하여 각각 후보 1, 2, 3번에 대응시킵니다. 
+                    센서 값이 0~33이면 1번, 34~66이면 2번, 67~100이면 3번 후보가 선택됩니다.
+                </div>
+            </div>
+
+            <section class="programming-steps">
+                <div class="algorithm-step">
+                    <p class="step-title">2. 후보 번호를 선택하여 후보자에게 투표한다.</p>
+                    <ul class="step">
+                        <li>'투표하기' 신호를 받으면 슬라이더 센서를 움직여 후보의 번호를 선택하고, 버튼을 눌러 선택한 후보자에게 투표한다. 선택한 후보의 득표수를 늘리기 위해 '득표 반영하기' 신호를 보낸다.</li>
+                    </ul>
+
+                    <!-- 상호작용 퀴즈 -->
+                    <div class="interactive-coding" onclick="showVotingQuiz()">
+                        🗳️ 투표 과정 이해도 확인하기 (클릭)
+                    </div>
+                    <div id="votingQuiz" class="coding-quiz" style="display: none;">
+                        <div class="quiz-question">투표 과정에서 올바른 순서는?</div>
+                        <ul class="quiz-options">
+                            <li onclick="selectVotingAnswer(this, false)">버튼 누르기 → 슬라이더 조작 → 신호 전송</li>
+                            <li onclick="selectVotingAnswer(this, true)">슬라이더 조작 → 버튼 누르기 → 신호 전송</li>
+                            <li onclick="selectVotingAnswer(this, false)">신호 전송 → 슬라이더 조작 → 버튼 누르기</li>
+                            <li onclick="selectVotingAnswer(this, false)">신호 전송 → 버튼 누르기 → 슬라이더 조작</li>
+                        </ul>
+                        <div id="votingFeedback" class="quiz-feedback" style="display: none;"></div>
+                    </div>
+                </div>
+
+                <div class="table-with-images">
+                    <div class="side-images">
+                        <img src="../Images/vote1.PNG" alt="투표 과정 보조 이미지 1" class="side-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"/>
+                        <div style="display:none; padding: 20px; background: #f0f0f0; text-align: center; border-radius: 4px;">
+                            [투표 과정 이미지 1]<br/>
+                            이미지를 불러올 수 없습니다.
+                        </div>
+                        <img src="../Images/vote2.PNG" alt="투표 과정 보조 이미지 2" class="side-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"/>
+                        <div style="display:none; padding: 20px; background: #f0f0f0; text-align: center; border-radius: 4px;">
+                            [투표 과정 이미지 2]<br/>
+                            이미지를 불러올 수 없습니다.
+                        </div>
+                    </div>
+                    <table class="program1-table">
+                        <thead>
+                            <tr>
+                                <th>상세 알고리즘</th>
+                                <th>프로그래밍</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><img src="../Images/a1.PNG" alt="상세 알고리즘 1" class="table-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"/>
+                                    <div style="display:none; padding: 20px; background: #f0f0f0; text-align: center; border-radius: 4px;">
+                                        [상세 알고리즘 이미지 1]<br/>
+                                        이미지를 불러올 수 없습니다.
+                                    </div>
+                                </td>
+                                <td><img src="../Images/b1.PNG" alt="프로그래밍 코드 1" class="table-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"/>
+                                    <div style="display:none; padding: 20px; background: #f0f0f0; text-align: center; border-radius: 4px;">
+                                        [프로그래밍 코드 이미지 1]<br/>
+                                        이미지를 불러올 수 없습니다.
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><img src="../Images/a2.PNG" alt="상세 알고리즘 2" class="table-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"/>
+                                    <div style="display:none; padding: 20px; background: #f0f0f0; text-align: center; border-radius: 4px;">
+                                        [상세 알고리즘 이미지 2]<br/>
+                                        이미지를 불러올 수 없습니다.
+                                    </div>
+                                </td>
+                                <td><img src="../Images/b2.PNG" alt="프로그래밍 코드 2" class="table-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"/>
+                                    <div style="display:none; padding: 20px; background: #f0f0f0; text-align: center; border-radius: 4px;">
+                                        [프로그래밍 코드 이미지 2]<br/>
+                                        이미지를 불러올 수 없습니다.
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- 코딩 시뮬레이터 -->
+                <div class="coding-simulator">
+                    <div class="simulator-header">💻 블록 코딩 시뮬레이터</div>
+                    <div class="guide-content" style="margin-bottom: 15px;">
+                        아래 코드 블록들을 드래그하여 올바른 순서로 배치해보세요.
+                    </div>
+                    <div class="code-blocks">
+                        <button class="code-block" draggable="true" data-block="sensor">슬라이더 센서 읽기</button>
+                        <button class="code-block" draggable="true" data-block="condition">조건문 (if)</button>
+                        <button class="code-block" draggable="true" data-block="button">버튼 입력 감지</button>
+                        <button class="code-block" draggable="true" data-block="signal">신호 전송</button>
+                        <button class="code-block" draggable="true" data-block="display">후보 번호 표시</button>
+                    </div>
+                    <div class="code-workspace" id="codeWorkspace">
+                        <div class="workspace-placeholder">여기에 코드 블록을 드래그하세요</div>
+                    </div>
+                    <button class="btn-primary" onclick="checkCodeOrder()">코드 순서 확인</button>
+                    <div id="codeResult" class="quiz-feedback" style="display: none;"></div>
+                </div>
+
+                <div class="algorithm-step">
+                    <p class="step-title">3. 선택된 후보의 득표수를 1만큼 증가한다.</p>
+                    <ul class="step-details">
+                        <li>'득표 반영하기' 신호를 받으면 선택된 후보의 득표수를 1씩 증가시킵니다.</li>
+                    </ul>
+
+                    <!-- 득표 반영 퀴즈 -->
+                    <div class="interactive-coding" onclick="showScoreQuiz()">
+                        📊 득표 반영 이해도 확인하기 (클릭)
+                    </div>
+                    <div id="scoreQuiz" class="coding-quiz" style="display: none;">
+                        <div class="quiz-question">득표수 증가 시 주의할 점은?</div>
+                        <ul class="quiz-options">
+                            <li onclick="selectScoreAnswer(this, false)">모든 후보의 득표수를 동시에 증가</li>
+                            <li onclick="selectScoreAnswer(this, true)">선택된 후보의 득표수만 증가</li>
+                            <li onclick="selectScoreAnswer(this, false)">득표수를 2씩 증가</li>
+                            <li onclick="selectScoreAnswer(this, false)">득표수를 초기화 후 증가</li>
+                        </ul>
+                        <div id="scoreFeedback" class="quiz-feedback" style="display: none;"></div>
+                    </div>
+                </div>
+
+                <div class="table-with-images">
+                    <div class="side-images">
+                        <img src="../Images/vote1.PNG" alt="득표 반영 보조 이미지" class="side-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"/>
+                        <div style="display:none; padding: 20px; background: #f0f0f0; text-align: center; border-radius: 4px;">
+                            [득표 반영 이미지]<br/>
+                            이미지를 불러올 수 없습니다.
+                        </div>
+                    </div>
+                    <table class="program2-table">
+                        <thead>
+                            <tr>
+                                <th>상세 알고리즘</th>
+                                <th>프로그래밍</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><img src="../Images/a3.PNG" alt="상세 알고리즘 3" class="table-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"/>
+                                    <div style="display:none; padding: 20px; background: #f0f0f0; text-align: center; border-radius: 4px;">
+                                        [상세 알고리즘 이미지 3]<br/>
+                                        이미지를 불러올 수 없습니다.
+                                    </div>
+                                </td>
+                                <td><img src="../Images/b3.PNG" alt="프로그래밍 코드 3" class="table-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"/>
+                                    <div style="display:none; padding: 20px; background: #f0f0f0; text-align: center; border-radius: 4px;">
+                                        [프로그래밍 코드 이미지 3]<br/>
+                                        이미지를 불러올 수 없습니다.
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- 학습 정리 -->
+                <div class="step-guide" style="margin-top: 30px;">
+                    <div class="guide-title">📝 이번 단계에서 배운 내용</div>
+                    <div class="guide-content">
+                        <strong>1. 슬라이더 센서 활용:</strong> 센서 값을 3등분하여 후보 선택<br/>
+                        <strong>2. 조건문 사용:</strong> 센서 값에 따른 후보 번호 결정<br/>
+                        <strong>3. 신호 전송:</strong> 선택된 후보 정보를 다른 오브젝트로 전달<br/>
+                        <strong>4. 득표수 관리:</strong> 선택된 후보의 득표수만 정확히 증가
+                    </div>
+                </div>
+            </section>
+            <!-- 네비게이션 버튼 -->
+            <div class="navigation-buttons">
+                <a href="chapter3.xhtml" class="nav-btn prev-btn">이전 챕터</a>
+                <a href="chapter5.xhtml" class="nav-btn next-btn">다음 챕터</a>
+            </div>
+        </section>
+        <div class="page-number">
+            <span class="chapter">2. 피지컬 컴퓨팅 시스템 개발하기</span>
+            <span class="number">150</span>
+        </div>
+    </div>
+
+    <!-- 기존 스크립트 먼저 로드 -->
+    <script type="text/javascript" src="../Scripts/chapter4-interactive.js"></script>
+    <!-- 네비게이션 스크립트를 마지막에 로드 -->
+    <script type="text/javascript" src="../Scripts/navigation.js"></script>
+</body>
+</html>

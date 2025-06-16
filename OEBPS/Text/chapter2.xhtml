@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="ko" xml:lang="ko">
+<head>
+    <title>3. 전자 투표 시스템 만들기 - 추상화하기</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" type="text/css" href="../Styles/common.css"/>
+    <link rel="stylesheet" type="text/css" href="../Styles/chapter.css"/>
+    <link rel="stylesheet" type="text/css" href="../Styles/chapter2.css"/>
+    <link rel="stylesheet" type="text/css" href="../Styles/interactive.css"/>
+</head>
+<body>
+    <div class="chapter-container">
+        <section class="main-content">
+            <h1 class="chapter-title">3. 전자 투표 시스템 만들기 - 추상화하기</h1>
+            
+            <section class="problem-section">
+                <div class="box problem-look">
+                    <h2><span class="number">3.</span> 추상화하기</h2>
+                    <p class="section-description">전자 투표 시스템을 만들기 위해 해결해야 할 문제를 작은 단위로 나누고, 핵심 요소를 추출해 보자.</p>
+
+                    <section class="problem-decomposition">
+                        <h3><span class="title-box">📌문제 분해</span></h3>
+                        <ul class="process-box">
+                            <li><strong>투표하기</strong> - 투표 시작을 안내하고 후보자에게 투표하는 부분이다.</li>
+                            <li><strong>당선자 선정 및 안내하기</strong> - 투표를 마치면 당선자를 선정하기 위해 후보자의 득표수를 비교하여 당선자를 선정한다.</li>
+                        </ul>
+                    </section>
+
+                    <section class="interact-section">
+                        <h3>💬 상호작용 질문</h3>
+                        <p>전자 투표 시스템의 장점은 무엇인가요?</p>
+                        <input type="text" id="answer" placeholder="답변을 입력하세요" aria-label="전자 투표 시스템의 장점"/>
+                        <button onclick="checkAnswer()" type="button">제출</button>
+                        <div id="feedback" role="alert" aria-live="polite"></div>
+
+                        <h3>📝 퀴즈 문제</h3>
+                        <p>전자투표 시스템의 핵심 요소는 무엇인가요?</p>
+                        <form id="quizForm">
+                            <label><input type="radio" name="q1" value="1" /> 보안</label>
+                            <label><input type="radio" name="q1" value="2" /> 속도</label>
+                            <label><input type="radio" name="q1" value="3" /> 광고</label>
+                        </form>
+                        
+                        <button onclick="gradeQuiz()" type="button">채점</button>
+                        <div id="result" role="alert" aria-live="polite"></div>
+                    </section>
+                </div>
+
+                <section class="box analysis"> <!-- div → section 변경 -->
+                    <section class="core-elements">
+                        <h3><span class="title-box">📌핵심 요소 추출</span></h3>
+                        <div class="core-elements-container">
+                            <aside class="sensor-tip">
+                                <h4><strong>후보 선택 슬라이더 센서</strong></h4>
+                                <div class="sensor-range">
+                                    <img src="../Images/sensor.PNG" alt="슬라이더 센서 값 구간을 보여주는 다이어그램" class="sensor-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"/>
+                                    <div style="display:none; padding: 20px; background: #f0f0f0; text-align: center; border-radius: 4px;">
+                                        [슬라이더 센서 이미지]<br/>
+                                        이미지를 불러올 수 없습니다.
+                                    </div>
+                                </div>
+                                <div class="test-block">
+                                    <h4>[보충] 슬라이더 센서와 버튼 센서 테스트</h4>
+                                    <p class="blue-text">실습 전에 센서를 테스트하여 정상적으로 동작하는지 확인한다.</p>
+                                    <img src="../Images/sensor_code.PNG" alt="센서 테스트를 위한 블록 코딩 예시" class="block-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"/>
+                                    <div style="display:none; padding: 20px; background: #f0f0f0; text-align: center; border-radius: 4px;">
+                                        [센서 테스트 코드 이미지]<br/>
+                                        이미지를 불러올 수 없습니다.
+                                    </div>
+                                </div>
+                            </aside>
+                            <table class="elements-table">
+                                <thead>
+                                    <tr>
+                                        <th>작은 문제</th>
+                                        <th>핵심 요소</th>
+                                        <th>핵심 요소 설명</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td rowspan="6">투표하기</td>
+                                        <td>후보번호 선택기(슬라이더 센서)</td>
+                                        <td>투표할 때 슬라이더 센서의 입력값을 3등분해서 후보자의 번호를 보여 준다.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>투표 버튼(버튼)</td>
+                                        <td>버튼을 누르면 슬라이더 센서로 선택한 후보자의 득표수를 1씩 증가한다.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>투표 종료 버튼</td>
+                                        <td>투표 종료 버튼을 누르면 투표를 중단하고, 당선자를 선출하도록 알려 준다.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>후보 1의 득표수</td>
+                                        <td>후보 1의 득표수를 알려 준다. 초깃값은 0이며, 후보 1이 선택되면 득표수가 1씩 증가한다.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>후보 2의 득표수</td>
+                                        <td>후보 2의 득표수를 알려 준다. 초깃값은 0이며, 후보 2이 선택되면 득표수가 1씩 증가한다.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>후보 3의 득표수</td>
+                                        <td>후보 3의 득표수를 알려 준다. 초깃값은 0이며, 후보 3이 선택되면 득표수가 1씩 증가한다.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>당선자 선정 및 안내하기</td>
+                                        <td>당선자 번호</td>
+                                        <td>후보 1, 후보 2, 후보 3의 득표수를 비교하여 가장 많은 표를 얻은 후보의 번호를 당선자로 안내한다.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <section class="problem-visualization">
+                        <h3><span class="title-box">📌문제를 핵심 요소로 표현하기</span></h3>
+                        <div class="side-by-side">
+                            <figure class="state-figure">
+                                <img src="../Images/current.PNG" alt="현재 초기 상태를 보여주는 다이어그램" class="state-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"/>
+                                <div style="display:none; padding: 20px; background: #f0f0f0; text-align: center; border-radius: 4px;">
+                                    [현재 상태 이미지]<br/>
+                                    이미지를 불러올 수 없습니다.
+                                </div>
+                                <figcaption class="state-caption">
+                                    <strong>현재 상태</strong><br/>
+                                    후보 득표수 : 0으로 초기화<br/>
+                                    당선자 번호 : 0으로 초기화
+                                </figcaption>
+                            </figure>
+                            <figure class="state-figure">
+                                <img src="../Images/result.PNG" alt="후보자 당선 결과 상태를 보여주는 다이어그램" class="state-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"/>
+                                <div style="display:none; padding: 20px; background: #f0f0f0; text-align: center; border-radius: 4px;">
+                                    [목표 상태 이미지]<br/>
+                                    이미지를 불러올 수 없습니다.
+                                </div>
+                                <figcaption class="state-caption">
+                                    <strong>목표 상태</strong><br/>
+                                    후보 득표수 : 후보 선택 횟수<br/>
+                                    당선자 번호 : 후보 중 다득표자 번호
+                                </figcaption>
+                            </figure>
+                        </div>
+                    </section>
+
+                    <section class="interact-section" style="margin-top: 30px;">
+                        <h3>🎯 학습 확인</h3>
+                        <div class="interactive-element" onclick="showAbstractionQuiz()">
+                            💡 추상화 이해도 확인하기 (클릭)
+                        </div>
+                        <div id="abstractionQuiz" class="quiz-container" style="display: none;">
+                            <div class="quiz-question">문제 분해의 목적은 무엇인가요?</div>
+                            <ul class="quiz-options">
+                                <li onclick="selectAbstractionAnswer(this, false)">문제를 더 복잡하게 만들기 위해</li>
+                                <li onclick="selectAbstractionAnswer(this, true)">복잡한 문제를 해결 가능한 작은 단위로 나누기 위해</li>
+                                <li onclick="selectAbstractionAnswer(this, false)">시간을 더 오래 걸리게 하기 위해</li>
+                                <li onclick="selectAbstractionAnswer(this, false)">문제를 숨기기 위해</li>
+                            </ul>
+                            <div id="abstractionFeedback" class="quiz-feedback" style="display: none;"></div>
+                        </div>
+                    </section>
+                </section> 
+            </section>
+
+            <div class="navigation-buttons">
+                <a href="chapter1.xhtml" class="nav-btn prev-btn">이전 챕터</a>
+                <a href="chapter3.xhtml" class="nav-btn next-btn">다음 챕터</a>
+            </div>
+        </section>
+        <div class="page-number">
+            <span class="chapter">2. 피지컬 컴퓨팅 시스템 개발하기</span>
+            <span class="number">148</span>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="../Scripts/chapter2-interactive.js"></script>
+    <script type="text/javascript" src="../Scripts/navigation.js"></script>
+</body>
+</html>

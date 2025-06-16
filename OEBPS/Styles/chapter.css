@@ -1,0 +1,360 @@
+/* 챕터별 특화 스타일 */
+
+/* 학습목표 박스 */
+.goal {
+  border-left-color: #4caf50;
+  background: linear-gradient(135deg, #f8fff8 0%, #e8f5e8 100%);
+}
+
+.goal-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.goal-text {
+  flex: 2;
+}
+
+.goal-image {
+  flex: 1;
+  text-align: center;
+}
+
+.goal-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.goal h2 {
+  color: #4caf50;
+}
+
+.goal ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.goal li {
+  padding: 8px 0;
+  padding-left: 25px;
+  position: relative;
+}
+
+.goal li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #4caf50;
+  font-weight: bold;
+}
+
+/* 중요 용어 박스 */
+.terms {
+  border-left-color: #ff9800;
+  background: linear-gradient(135deg, #fff8f0 0%, #ffeaa7 100%);
+}
+
+.terms h2 {
+  color: #ff9800;
+}
+
+.terms dt {
+  color: #ff9800;
+  margin-bottom: 5px;
+}
+
+.terms dd {
+  margin-bottom: 15px;
+  padding-left: 20px;
+  font-style: italic;
+}
+
+/* 학습 전개 박스 */
+.flow {
+  border-left-color: #9c27b0;
+  background: linear-gradient(135deg, #faf8ff 0%, #f3e5f5 100%);
+}
+
+.flow h2 {
+  color: #9c27b0;
+}
+
+.flow-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+.flow-table th,
+.flow-table td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.flow-table th {
+  background: #9c27b0;
+  color: white;
+  font-weight: 600;
+}
+
+.flow-table td strong {
+  color: #9c27b0;
+  font-weight: 600;
+}
+
+.flow-table ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.flow-table li {
+  margin: 5px 0;
+}
+
+/* 정보 박스 */
+.info-box {
+  background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+  border: 1px solid #2196f3;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.info-box h3 {
+  color: #1976d2;
+  margin-bottom: 15px;
+  font-size: 1.2em;
+}
+
+.info-box p {
+  margin-bottom: 10px;
+  color: #1565c0;
+}
+
+/* 문제 섹션 */
+.problem-section {
+  padding: 30px;
+  background: #fafafa;
+}
+
+.problem-look {
+  border-left-color: #e91e63;
+  background: linear-gradient(135deg, #fff0f5 0%, #fce4ec 100%);
+}
+
+.problem-look h2 {
+  color: #e91e63;
+}
+
+.number {
+  background: #e91e63;
+  color: white;
+  padding: 5px 12px;
+  border-radius: 50%;
+  font-size: 0.9em;
+  margin-right: 10px;
+}
+
+.problem-container {
+  display: flex;
+  gap: 30px;
+  margin-top: 20px;
+  align-items: flex-start;
+}
+
+.problem-image {
+  flex: 1;
+}
+
+.problem-cartoon {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.motivation-table {
+  flex: 1;
+}
+
+.vertical-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.vertical-table th {
+  background: #e91e63;
+  color: white;
+  padding: 15px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.vertical-table td {
+  padding: 20px;
+  background: white;
+  border: 1px solid #e0e0e0;
+}
+
+/* 동영상 컨테이너 */
+.video-container {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.video-container h4 {
+  color: #e91e63;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.youtube-preview {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  cursor: pointer;
+}
+
+.youtube-preview img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.youtube-preview:hover img {
+  transform: scale(1.05);
+}
+
+.play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 0, 0, 0.8);
+  color: white;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  transition: background 0.3s ease;
+}
+
+.youtube-preview:hover .play-button {
+  background: rgba(255, 0, 0, 1);
+}
+
+.video-caption {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 0.9em;
+  color: #666;
+}
+
+/* 분석 박스 */
+.analysis {
+  border-left-color: #00bcd4;
+  background: linear-gradient(135deg, #f0fdff 0%, #e0f2f1 100%);
+}
+
+.analysis h2 {
+  color: #00bcd4;
+}
+
+.problem-description {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border-left: 4px solid #00bcd4;
+}
+
+.analysis-grid {
+  display: flex;
+  gap: 30px;
+  align-items: flex-start;
+}
+
+.analysis-main {
+  flex: 2;
+}
+
+.state-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+.state-table th,
+.state-table td {
+  padding: 15px;
+  text-align: left;
+  border: 1px solid #e0e0e0;
+}
+
+.state-table th {
+  background: #00bcd4;
+  color: white;
+  font-weight: 600;
+}
+
+.state-table td:first-child {
+  background: #f5f5f5;
+  font-weight: 600;
+  color: #00bcd4;
+}
+
+/* 미리보기 박스 */
+.preview-box {
+  flex: 1;
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.preview-content {
+  text-align: center;
+}
+
+.preview-text {
+  margin-bottom: 15px;
+}
+
+.preview-text p {
+  color: #00bcd4;
+  font-weight: 600;
+}
+
+.preview-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* 모바일 반응형 */
+@media (max-width: 768px) {
+  .goal-content,
+  .problem-container,
+  .analysis-grid {
+    flex-direction: column;
+  }
+
+  .two-column {
+    padding: 20px;
+  }
+
+  .problem-section {
+    padding: 20px;
+  }
+}

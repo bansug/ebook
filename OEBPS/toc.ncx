@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ncx xmlns="http://www.daisy.org/z3986/2005/ncx/" version="2005-1">
+    <head>
+        <meta name="dtb:uid" content="electronic-voting-system-2024"/>
+        <meta name="dtb:depth" content="1"/>
+        <meta name="dtb:totalPageCount" content="0"/>
+        <meta name="dtb:maxPageNumber" content="0"/>
+    </head>
+    <docTitle>
+        <text>전자 투표 시스템 만들기</text>
+    </docTitle>
+    <navMap>
+        <navPoint id="chapter1" playOrder="1">
+            <navLabel>
+                <text>3. 전자 투표 시스템 만들기</text>
+            </navLabel>
+            <content src="Text/chapter1.xhtml"/>
+        </navPoint>
+        <navPoint id="chapter2" playOrder="2">
+            <navLabel>
+                <text>3. 전자 투표 시스템 만들기 - 추상화하기</text>
+            </navLabel>
+            <content src="Text/chapter2.xhtml"/>
+        </navPoint>
+        <navPoint id="chapter3" playOrder="3">
+            <navLabel>
+                <text>3. 전자 투표 시스템 만들기 - 알고리즘 설계 및 프로그래밍</text>
+            </navLabel>
+            <content src="Text/chapter3.xhtml"/>
+        </navPoint>
+        <navPoint id="chapter4" playOrder="4">
+            <navLabel>
+                <text>4. 후보 선택 및 득표 반영</text>
+            </navLabel>
+            <content src="Text/chapter4.xhtml"/>
+        </navPoint>
+        <navPoint id="chapter5" playOrder="5">
+            <navLabel>
+                <text>5. 투표 종료 및 당선자 안내</text>
+            </navLabel>
+            <content src="Text/chapter5.xhtml"/>
+        </navPoint>
+    </navMap>
+</ncx>

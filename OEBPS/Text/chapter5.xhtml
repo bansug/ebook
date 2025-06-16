@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="ko" xml:lang="ko">
+<head>
+    <title>5. 투표 종료 및 당선자 안내</title>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" type="text/css" href="../Styles/common.css"/>
+    <link rel="stylesheet" type="text/css" href="../Styles/chapter.css"/>
+    <link rel="stylesheet" type="text/css" href="../Styles/chapter5.css"/>
+    <link rel="stylesheet" type="text/css" href="../Styles/interactive.css"/>
+</head>
+<body>
+    <div class="chapter-container">
+        <section class="main-content">
+            <h1 class="chapter-title">5. 투표 종료 및 당선자 안내</h1>
+            
+            <!-- 진행률 추적기 -->
+            <div class="progress-tracker">
+                <h3>🎯 학습 진행률</h3>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill" style="width: 80%;"></div>
+                </div>
+                <div class="progress-text">프로그래밍 구현 단계 (80% 완료)</div>
+            </div>
+
+            <!-- 투표 종료 및 당선자 안내 섹션 -->
+            <div class="algorithm-step">
+                <p class="step-title">4. 투표를 마치면 투표를 종료한다.</p>
+                <p>투표 종료 버튼을 누르면 더 이상 투표를 받지 않고, 당선자를 선정하는 단계로 넘어갑니다. 이 단계에서는 투표 종료 신호를 보내 당선자 선정 프로세스를 시작합니다.</p>
+                
+                <!-- 상호작용 퀴즈 -->
+                <div class="interactive-element" onclick="showEndVoteQuiz()">
+                    🛑 투표 종료 과정 이해도 확인하기 (클릭)
+                </div>
+                <div id="endVoteQuiz" class="quiz-container" style="display: none;">
+                    <div class="quiz-question">투표 종료 버튼을 누르면 어떤 일이 발생하나요?</div>
+                    <ul class="quiz-options">
+                        <li onclick="selectEndVoteAnswer(this, false)">모든 득표수가 초기화됩니다</li>
+                        <li onclick="selectEndVoteAnswer(this, false)">모든 후보의 득표수가 1씩 증가합니다</li>
+                        <li onclick="selectEndVoteAnswer(this, true)">더 이상 투표를 받지 않고 당선자 선정 단계로 넘어갑니다</li>
+                        <li onclick="selectEndVoteAnswer(this, false)">프로그램이 종료됩니다</li>
+                    </ul>
+                    <div id="endVoteFeedback" class="quiz-feedback" style="display: none;"></div>
+                </div>
+                
+                <div class="table-with-images">
+                    <table class="program1-table">
+                        <thead>
+                            <tr>
+                                <th>상세 알고리즘</th>
+                                <th>프로그래밍</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><img src="../Images/c1.png" alt="투표 종료 알고리즘" class="block-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"/>
+                                    <div style="display:none; padding: 20px; background: #f0f0f0; text-align: center; border-radius: 4px;">
+                                        [투표 종료 알고리즘 이미지]<br/>
+                                        이미지를 불러올 수 없습니다.
+                                    </div>
+                                </td>
+                                <td><img src="../Images/d1.png" alt="투표 종료 프로그래밍" class="block-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"/>
+                                    <div style="display:none; padding: 20px; background: #f0f0f0; text-align: center; border-radius: 4px;">
+                                        [투표 종료 프로그래밍 이미지]<br/>
+                                        이미지를 불러올 수 없습니다.
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="side-images">
+                        <img src="../Images/f1.PNG" alt="투표 종료 보조 이미지" class="side-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"/>
+                        <div style="display:none; padding: 20px; background: #f0f0f0; text-align: center; border-radius: 4px;">
+                            [투표 종료 보조 이미지]<br/>
+                            이미지를 불러올 수 없습니다.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 당선자 선정 알고리즘 -->
+            <div class="algorithm-step">
+                <p class="step-title">5. 가장 많은 표를 얻은 후보를 당선자로 선정하여 안내한다.</p>
+                <p>후보들의 득표수를 비교하여 득표수가 가장 많은 후보자의 번호를 당선자로 선정합니다. 단, 해당 프로그램에서는 동점자를 고려하지 않았으며, 동점자가 있을 경우 알고리즘에 따라 뒷번호의 후보자를 당선자로 안내합니다.</p>
+                
+                <!-- 상호작용 퀴즈 -->
+                <div class="interactive-element" onclick="showWinnerQuiz()">
+                    🏆 당선자 선정 이해도 확인하기 (클릭)
+                </div>
+                <div id="winnerQuiz" class="quiz-container" style="display: none;">
+                    <div class="quiz-question">후보 1, 2, 3의 득표수가 각각 5, 5, 3일 때 당선자는?</div>
+                    <ul class="quiz-options">
+                        <li onclick="selectWinnerAnswer(this, false)">후보 1</li>
+                        <li onclick="selectWinnerAnswer(this, true)">후보 2</li>
+                        <li onclick="selectWinnerAnswer(this, false)">후보 3</li>
+                        <li onclick="selectWinnerAnswer(this, false)">당선자 없음 (재투표)</li>
+                    </ul>
+                    <div id="winnerFeedback" class="quiz-feedback" style="display: none;"></div>
+                </div>
+                
+                <div class="table-with-images">
+                    <table class="program2-table">
+                        <thead>
+                            <tr>
+                                <th>상세 알고리즘</th>
+                                <th>프로그래밍</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><img src="../Images/c2.png" alt="당선자 선정 알고리즘" class="block-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"/>
+                                    <div style="display:none; padding: 20px; background: #f0f0f0; text-align: center; border-radius: 4px;">
+                                        [당선자 선정 알고리즘 이미지]<br/>
+                                        이미지를 불러올 수 없습니다.
+                                    </div>
+                                </td>
+                                <td><img src="../Images/d2.png" alt="당선자 선정 프로그래밍" class="block-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"/>
+                                    <div style="display:none; padding: 20px; background: #f0f0f0; text-align: center; border-radius: 4px;">
+                                        [당선자 선정 프로그래밍 이미지]<br/>
+                                        이미지를 불러올 수 없습니다.
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="side-images">
+                        <img src="../Images/f2.PNG" alt="당선자 선정 보조 이미지 1" class="side-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"/>
+                        <div style="display:none; padding: 20px; background: #f0f0f0; text-align: center; border-radius: 4px;">
+                            [당선자 선정 보조 이미지 1]<br/>
+                            이미지를 불러올 수 없습니다.
+                        </div>
+                        <img src="../Images/f3.PNG" alt="당선자 선정 보조 이미지 2" class="side-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"/>
+                        <div style="display:none; padding: 20px; background: #f0f0f0; text-align: center; border-radius: 4px;">
+                            [당선자 선정 보조 이미지 2]<br/>
+                            이미지를 불러올 수 없습니다.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 투표 시뮬레이션 -->
+            <div class="voting-simulation">
+                <div class="simulation-header">🗳️ 전자 투표 시스템 시뮬레이션</div>
+                <p>아래 시뮬레이션을 통해 전자 투표 시스템의 작동 방식을 직접 체험해보세요.</p>
+                
+                <div class="simulation-controls">
+                <div class="control-group">
+                    <label class="control-label">후보 선택 (슬라이더 센서)</label>
+                    <div class="slider-container">
+                    <input type="range" min="0" max="100" value="50" class="slider" id="candidateSlider" />
+                    <span class="slider-value" id="sliderValue">2</span>
+                </div>
+                </div>
+            </div>
+>
+                
+                <div class="btn-group">
+                    <button class="btn btn-vote" id="voteBtn">투표하기</button>
+                    <button class="btn btn-end" id="endVoteBtn">투표 종료</button>
+                    <button class="btn btn-reset" id="resetBtn">초기화</button>
+                </div>
+                
+                <div class="simulation-results">
+                    <div class="results-title">투표 현황</div>
+                    <div class="candidate-results" id="candidateResults">
+                        <div class="candidate">
+                            <div class="candidate-number">후보 1</div>
+                            <div class="candidate-votes" id="votes1">0</div>
+                        </div>
+                        <div class="candidate">
+                            <div class="candidate-number">후보 2</div>
+                            <div class="candidate-votes" id="votes2">0</div>
+                        </div>
+                        <div class="candidate">
+                            <div class="candidate-number">후보 3</div>
+                            <div class="candidate-votes" id="votes3">0</div>
+                        </div>
+                    </div>
+                    <div class="announcement" id="announcement"></div>
+                </div>
+            </div>
+
+            <!-- 득표 비교 흐름도 -->
+            <div class="problem-visualization">
+                <h3><span class="title-box">📌프로그램 실행 확인 및 평가하기</span></h3>
+                <p>다음 항목을 점검하여 실행 결과에 이상이 없는지 나와 친구의 프로그램을 확인해 보자. 오류가 없다면 완성된 프로그램을 친구들과 공유해보자.</p>
+                <div class="evaluation-section">
+                    <table class="evaluation-check-table">
+                        <thead>
+                            <tr>
+                                <th>항목</th>
+                                <th>상</th>
+                                <th>중</th>
+                                <th>하</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>슬라이더 센서의 값을 움직여 후보의 번호를 선택할 수 있는가?</td>
+                                <td><div class="custom-checkbox" onclick="toggleCheckbox(this)"></div></td>
+                                <td><div class="custom-checkbox" onclick="toggleCheckbox(this)"></div></td>
+                                <td><div class="custom-checkbox" onclick="toggleCheckbox(this)"></div></td>
+                            </tr>
+                            <tr>
+                                <td>버튼을 누르면 슬라이더 센서로 선택한 후보의 득표수가 1씩 증가하는가?</td>
+                                <td><div class="custom-checkbox" onclick="toggleCheckbox(this)"></div></td>
+                                <td><div class="custom-checkbox" onclick="toggleCheckbox(this)"></div></td>
+                                <td><div class="custom-checkbox" onclick="toggleCheckbox(this)"></div></td>
+                            </tr>
+                            <tr>
+                                <td>가장 많은 표를 얻은 후보가 당선자로 선정되었다고 알려 주는가?</td>
+                                <td><div class="custom-checkbox" onclick="toggleCheckbox(this)"></div></td>
+                                <td><div class="custom-checkbox" onclick="toggleCheckbox(this)"></div></td>
+                                <td><div class="custom-checkbox" onclick="toggleCheckbox(this)"></div></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <img src="../Images/f4.PNG" alt="평가 이미지" class="evaluation-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"/>
+                    <div style="display:none; padding: 20px; background: #f0f0f0; text-align: center; border-radius: 4px; flex: 1;">
+                        [평가 이미지]<br/>
+                        이미지를 불러올 수 없습니다.
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 종합 평가 -->
+            <div class="final-evaluation">
+                <h3><span class="title-box">📊 종합 평가</span></h3>
+                <p>전자 투표 시스템 개발 과정에서 학습한 내용을 종합적으로 평가해 봅시다.</p>
+                
+                <div class="interactive-element" onclick="showFinalQuiz()">
+                    📝 최종 이해도 평가하기 (클릭)
+                </div>
+                <div id="finalQuiz" class="quiz-container" style="display: none;">
+                    <div class="quiz-question">1. 전자 투표 시스템에서 입력 장치로 사용되는 것은?</div>
+                    <ul class="quiz-options">
+                        <li onclick="selectFinalAnswer(this, 0, true)">슬라이더 센서와 버튼</li>
+                        <li onclick="selectFinalAnswer(this, 0, false)">스피커와 LED</li>
+                        <li onclick="selectFinalAnswer(this, 0, false)">모니터와 키보드</li>
+                        <li onclick="selectFinalAnswer(this, 0, false)">프린터와 마우스</li>
+                    </ul>
+                    
+                    <div class="quiz-question" style="margin-top: 30px;">2. 전자 투표 시스템 개발 과정의 올바른 순서는?</div>
+                    <ul class="quiz-options">
+                        <li onclick="selectFinalAnswer(this, 1, false)">프로그래밍 → 문제 분석 → 알고리즘 설계 → 추상화</li>
+                        <li onclick="selectFinalAnswer(this, 1, true)">문제 분석 → 추상화 → 알고리즘 설계 → 프로그래밍</li>
+                        <li onclick="selectFinalAnswer(this, 1, false)">추상화 → 프로그래밍 → 문제 분석 → 알고리즘 설계</li>
+                        <li onclick="selectFinalAnswer(this, 1, false)">알고리즘 설계 → 문제 분석 → 추상화 → 프로그래밍</li>
+                    </ul>
+                    
+                    <div class="quiz-question" style="margin-top: 30px;">3. 당선자 선정 알고리즘에서 중요한 것은?</div>
+                    <ul class="quiz-options">
+                        <li onclick="selectFinalAnswer(this, 2, false)">모든 후보의 득표수를 초기화하는 것</li>
+                        <li onclick="selectFinalAnswer(this, 2, false)">투표 시간을 측정하는 것</li>
+                        <li onclick="selectFinalAnswer(this, 2, true)">득표수를 비교하여 최다 득표자를 찾는 것</li>
+                        <li onclick="selectFinalAnswer(this, 2, false)">모든 후보에게 동일한 기회를 주는 것</li>
+                    </ul>
+                    
+                    <div id="finalFeedback" class="quiz-feedback" style="display: none;"></div>
+                    
+                    <button class="btn btn-vote" id="submitFinalQuiz" style="margin-top: 20px; width: 100%;">제출하기</button>
+                </div>
+                
+                <div class="evaluation-result" id="evaluationResult" style="display: none;">
+                    <div class="result-title">학습 평가 결과</div>
+                    <div class="result-badge"></div>
+                    <div class="result-score" id="resultScore">0/3</div>
+                    <div class="result-message" id="resultMessage">퀴즈를 풀어 학습 성취도를 확인하세요!</div>
+                </div>
+            </div>
+            
+            <!-- 학습 완료 축하 메시지 -->
+            <div class="completion-message" id="completionMessage" style="display: none;">
+                <div class="confetti"></div>
+                <div class="confetti"></div>
+                <div class="confetti"></div>
+                <div class="confetti"></div>
+                <div class="confetti"></div>
+                
+                <h3>🎉 축하합니다! 전자 투표 시스템 개발 학습을 완료했습니다!</h3>
+                <p>피지컬 컴퓨팅 시스템 개발의 전 과정을 성공적으로 학습하셨습니다.</p>
+                <p>이제 여러분은 문제 분석, 추상화, 알고리즘 설계, 프로그래밍의 전 과정을 이해하고 적용할 수 있습니다.</p>
+                <p>앞으로도 다양한 문제 해결에 컴퓨팅 사고력을 활용해보세요!</p>
+            </div>
+
+            <!-- 네비게이션 버튼 -->
+            <div class="navigation-buttons">
+                <a href="chapter4.xhtml" class="nav-btn prev-btn">이전 챕터</a>
+                <div class="nav-btn" style="background: linear-gradient(135deg, #4caf50 0%, #2e7d32 100%); cursor: default;">
+                    학습 완료 🎉
+                </div>
+            </div>
+        </section>
+        <div class="page-number">
+            <span class="chapter">2. 피지컬 컴퓨팅 시스템 개발하기</span>
+            <span class="number">151</span>
+        </div>
+    </div>
+
+    <!-- 기존 스크립트 먼저 로드 -->
+    <script type="text/javascript" src="../Scripts/chapter5-interactive.js"></script>
+    <!-- 네비게이션 스크립트를 마지막에 로드 -->
+    <script type="text/javascript" src="../Scripts/navigation.js"></script>
+</body>
+</html>

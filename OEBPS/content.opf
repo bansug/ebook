@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package xmlns="http://www.idpf.org/2007/opf" unique-identifier="BookId" version="3.0">
+    <metadata xmlns:dc="http://purl.org/dc/elements/1.1/">
+        <dc:identifier id="BookId">electronic-voting-system-2024</dc:identifier>
+        <dc:title>전자 투표 시스템 만들기</dc:title>
+        <dc:language>ko</dc:language>
+        <dc:creator>교육자료</dc:creator>
+        <dc:subject>피지컬 컴퓨팅</dc:subject>
+        <dc:description>센서를 활용한 전자 투표 시스템 개발 학습 교재</dc:description>
+        <meta property="dcterms:modified">2024-01-01T00:00:00Z</meta>
+    </metadata>
+    
+    <manifest>
+        <item id="ncx" href="toc.ncx" media-type="application/x-dtbncx+xml"/>
+        <item id="common-css" href="Styles/common.css" media-type="text/css"/>
+        <item id="chapter-css" href="Styles/chapter.css" media-type="text/css"/>
+        <item id="interactive-css" href="Styles/interactive.css" media-type="text/css"/>
+        <item id="chapter1" href="Text/chapter1.xhtml" media-type="application/xhtml+xml"/>
+        <item id="vote-img" href="Images/vote.png" media-type="image/png"/>
+        <item id="problem-img" href="Images/problem.PNG" media-type="image/png"/>
+        <item id="preview-img" href="Images/a.png" media-type="image/png"/>
+        <item id="interactive-js" href="Scripts/interactive.js" media-type="text/javascript"/>
+        <item id="chapter2-css" href="Styles/chapter2.css" media-type="text/css"/>
+        <item id="chapter2" href="Text/chapter2.xhtml" media-type="application/xhtml+xml"/>
+        <item id="chapter2-js" href="Scripts/chapter2-interactive.js" media-type="text/javascript"/>
+        <item id="sensor-img" href="Images/sensor.PNG" media-type="image/png"/>
+        <item id="sensor-code-img" href="Images/sensor_code.PNG" media-type="image/png"/>
+        <item id="current-img" href="Images/current.PNG" media-type="image/png"/>
+        <item id="result-img" href="Images/result.PNG" media-type="image/png"/>
+        <item id="chapter3-css" href="Styles/chapter3.css" media-type="text/css"/>
+        <item id="chapter3" href="Text/chapter3.xhtml" media-type="application/xhtml+xml"/>
+        <item id="chapter3-js" href="Scripts/chapter3-interactive.js" media-type="text/javascript"/>
+        <item id="run-img" href="Images/run.png" media-type="image/png"/>
+        <item id="object-img" href="Images/object.PNG" media-type="image/png"/>
+        <item id="algorithm-img" href="Images/algorithm.PNG" media-type="image/png"/>
+        <item id="program-img" href="Images/program.PNG" media-type="image/png"/>
+        <item id="chapter4-css" href="Styles/chapter4.css" media-type="text/css"/>
+        <item id="chapter4" href="Text/chapter4.xhtml" media-type="application/xhtml+xml"/>
+        <item id="chapter4-js" href="Scripts/chapter4-interactive.js" media-type="text/javascript"/>
+        <item id="a4-img" href="Images/a4.PNG" media-type="image/png"/>
+        <item id="vote1-img" href="Images/vote1.PNG" media-type="image/png"/>
+        <item id="vote2-img" href="Images/vote2.PNG" media-type="image/png"/>
+        <item id="a1-img" href="Images/a1.PNG" media-type="image/png"/>
+        <item id="b1-img" href="Images/b1.PNG" media-type="image/png"/>
+        <item id="a2-img" href="Images/a2.PNG" media-type="image/png"/>
+        <item id="b2-img" href="Images/b2.PNG" media-type="image/png"/>
+        <item id="a3-img" href="Images/a3.PNG" media-type="image/png"/>
+        <item id="b3-img" href="Images/b3.PNG" media-type="image/png"/>
+        <item id="chapter5-css" href="Styles/chapter5.css" media-type="text/css"/>
+        <item id="chapter5" href="Text/chapter5.xhtml" media-type="application/xhtml+xml"/>
+        <item id="chapter5-js" href="Scripts/chapter5-interactive.js" media-type="text/javascript"/>
+        <item id="c1-img" href="Images/c1.png" media-type="image/png"/>
+        <item id="d1-img" href="Images/d1.png" media-type="image/png"/>
+        <item id="f1-img" href="Images/f1.PNG" media-type="image/png"/>
+        <item id="c2-img" href="Images/c2.png" media-type="image/png"/>
+        <item id="d2-img" href="Images/d2.png" media-type="image/png"/>
+        <item id="f2-img" href="Images/f2.PNG" media-type="image/png"/>
+        <item id="f3-img" href="Images/f3.PNG" media-type="image/png"/>
+        <item id="f4-img" href="Images/f4.PNG" media-type="image/png"/>
+        <item id="navigation-js" href="Scripts/navigation.js" media-type="text/javascript"/>
+    </manifest>
+    
+    <spine toc="ncx">
+        <itemref idref="chapter1"/>
+        <itemref idref="chapter2"/>
+        <itemref idref="chapter3"/>
+        <itemref idref="chapter4"/>
+        <itemref idref="chapter5"/>
+    </spine>
+</package>
